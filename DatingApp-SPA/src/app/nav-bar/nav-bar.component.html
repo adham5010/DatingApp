@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand" routerLink="/">Dating APP</a>
+  <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+    aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button> -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Matches</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Lists</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Messages</a>
+      </li>
+    </ul>
+    <div class="dropdown" *ngIf="IsAuthinticated">
+      <a class="dropdown-toggle text-light">
+        Welcome {{Model.UserName}} !
+      </a>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Edit profile</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#"><i class="fa fa-sign-out"></i> Logout</a>
+      </div>
+    </div>
+
+    <form #loginForm = "ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="Login()" *ngIf="!IsAuthinticated">
+      <input class="form-control mr-sm-2"  #un name="UserName" type="text" required placeholder="User Name" [(ngModel)]="Model.UserName">
+      <input class="form-control mr-sm-2"  #pw name="Password" type="password" required placeholder="Password" [(ngModel)]="Model.Password">
+      <button class="btn btn-success my-2 my-sm-0" [disabled]="!loginForm.valid">Login</button>
+    </form>
+</nav>
